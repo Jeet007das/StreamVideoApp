@@ -27,10 +27,25 @@ export const getStreamLists = () =>{
 }
 
 export const setStreamLists = (obj) =>{
-    console.log(obj);
     return {
         type:actionTypes.SET_STREAMS_LIST,
         payLoad : obj
+    }
+}
+
+export const editStream = (obj) =>{
+    console.log(obj);
+    return {
+        type:actionTypes.UPDATE_STREAM,
+        payLoad : obj.id
+    }
+}
+
+export const deleteStream = (obj) =>{
+    console.log(obj);
+    return {
+        type:actionTypes.DELETE_STREAM,
+        payLoad : obj.id
     }
 }
 

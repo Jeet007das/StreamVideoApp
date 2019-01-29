@@ -35,6 +35,18 @@
 .center-position{
     margin-left: auto;
     margin-right: auto;
- 
-   
+}
+.card-style{
+    padding: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 11px;
+    border-right-width: 11px;
+    border-radius: 20px;
+    border-color: bisque;
+    background-color: cornsilk
+}
+.icon-style{
+    font-size: 60px;
+    color: cornflowerblue;
+    margin: 10px;
 }

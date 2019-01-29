@@ -1,4 +1,4 @@
-import { put, call, all } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import * as actions from "../Action";
 import { createStream, getStreamData } from "../StreamApi's/streamRelatedApi's";
 import swal from 'sweetalert';
@@ -9,7 +9,7 @@ export function* createStreamData(action) {
         let response = yield call(createStream, {url: '/streams', body: action.payLoad}) 
         if(response.status === 201)
         {
-            swal("Stream connected successfully");
+            swal("Stream Submitted successfully");
         }
         else{
             swal("Network Connection Problem");
