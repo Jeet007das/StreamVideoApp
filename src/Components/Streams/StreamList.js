@@ -22,9 +22,15 @@ class StreamList extends Component {
                            <div className="col-2 p-0">
                                 <i class="fa fa-play-circle icon-style" aria-hidden="true"></i>
                            </div>
-                           <div className="col-6 m-1 p-0">
+                           <div className="col-6 p-0">
                                <h3 style = {{color:"sienna"}}><b>{item.title}</b></h3>
                                <p style = {{color:"cadetblue"}}>{item.description}</p>
+                           </div>
+                           <div className = "col-2 p-0">
+                                 <i style = {{fontSize:"50px", color:"green", margin:"10px"}} class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                           </div>
+                           <div className = "col-2 p-0">
+                                    <i style = {{fontSize:"50px", color:"red", margin:"10px"}} class="fa fa-trash" aria-hidden="true"></i>
                            </div>
                        </div>
 
