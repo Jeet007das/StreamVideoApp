@@ -6,13 +6,13 @@ import reducer from './Redux_Store/Reducer/rootReducers';
 import './index.css';
 import App from './App';
 
-// import {watchAppUser} from './Redux_Store/Sagas';
+import { watchStreamCreation } from './Redux_Store/Sagas';
 
 import createSagaMiddleware from 'redux-saga';
 const sagaMiddleware = createSagaMiddleware();
 const componseEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, {}, componseEnhancers(applyMiddleware(sagaMiddleware)))
-// sagaMiddleware.run(watchAppUser)
+sagaMiddleware.run(watchStreamCreation)
 
 
 ReactDOM.render(

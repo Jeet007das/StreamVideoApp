@@ -1,3 +1,9 @@
 export const SIGNED_IN = 'SIGNED_IN'
 export const SIGNED_OUT = 'SIGNED_OUT'
+export const CREATE_STREAM = 'CREATE_STREAM'
+export const GET_STREAMS_LIST = 'GET_STREAMS_LIST'
+export const SET_STREAMS_LIST = 'SET_STREAMS_LIST'
+export const FETCH_STREAM = 'FETCH_STREAM'
+export const UPDATE_STREAM = 'UPDATE_STREAM'
+export const DELETE_STREAM = 'DELETE_STREAM'
 

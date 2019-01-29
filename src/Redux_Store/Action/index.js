@@ -1,3 +1,3 @@
-import { signIn, signOut } from './authRelatedAction';
+import { signIn, signOut, createStream, getStreamLists, setStreamLists } from './authRelatedAction';
 
-export {signIn, signOut};
+export {signIn, signOut, createStream, getStreamLists, setStreamLists};

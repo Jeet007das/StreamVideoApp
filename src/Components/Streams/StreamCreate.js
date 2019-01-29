@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import '../../StyleSheet/style.css';
+import { connect } from 'react-redux';
+import { createStream } from '../../Redux_Store/Action';
+import { bindActionCreators } from 'redux';
 
 class  StreamCreate  extends Component {
     renderError({error, touched}){
@@ -14,8 +17,6 @@ class  StreamCreate  extends Component {
     }
      
     renderInput = ({ input, label, placeholder, meta }) =>{
-        console.log(meta);
-        
          return (
             <div className = "field">
                          <label>{label}</label>
@@ -25,21 +26,21 @@ class  StreamCreate  extends Component {
             </div>
         )
     }
-    onSubmit(formValues){
-        console.log(formValues);
-        
+   onSubmit = (formValues) =>{
+        this.props.createStream(formValues)
     }
 
     render() {
       return (
-           <div className="container-fluid form-body">
-              <div   className="row">
-                  <form onSubmit={this.props.handleSubmit(this.onSubmit)} style = {{ backgroundColor : "burlywood", borderRadius: "20px"}}> 
+           <div className="">
+              <div   className="row mx-0" style ={{marginTop:"25vh"}}>
+                  <form className ="center-position" onSubmit ={this.props.handleSubmit(this.onSubmit)} style = {{ backgroundColor : "burlywood", borderRadius: "20px"}}> 
                       <Field name="title" placeholder="Enter Title" component={this.renderInput} label="Enter Title:" value = "fdsfsfs" />
                       <Field name="description" placeholder="Enter Description" component={this.renderInput} label="Enter Description:" />
-                      <button style = {{margin:"5px"}} type="button" className="btn btn-primary"><b>Submit</b></button>
+                      <button style = {{margin:"5px"}} type="submit" className="btn btn-primary"><b>Submit</b></button>
                   </form>
             </div>
+            {/* <h1>Stream list</h1> */}
         </div>
       )
     }
@@ -57,8 +58,18 @@ const validate = (formValues) => {
     return errors;
 }
 
-export default reduxForm({
+
+const fromWrapper =  reduxForm({
     form: 'streamForm',
     validate
-  })(StreamCreate)
+  })(StreamCreate);
+
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        createStream
+    }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(fromWrapper);
 
