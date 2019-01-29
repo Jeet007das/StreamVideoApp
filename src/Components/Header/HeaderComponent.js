@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './../../StyleSheet/style.css';
 import { Link } from 'react-router-dom';
 import GoogleAuth from '../OAuth/GoogleAuth';
+import { connect } from 'react-redux';
 
 
 class Header extends Component {
@@ -11,24 +12,29 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="container-fulid body">
+            <div className="body">
                 <div className="row m-0 p-0">
                     <div className="col-lg-2">
                         <Link to="/" className="item">
                            <i className="fa fa-home icon" aria-hidden="true"></i>
                         </Link>
                     </div>
-                    <div className="col-lg-6 ">
+                    <div className="col-lg-4 ">
                         <h3 className="homeHeader icon">Home</h3>
                     </div>
-                    {/* <div className="col-lg-2">
-                        <i onClick = { this.refreshStreamList } className="fa fa-refresh icon" aria-hidden="true"></i>
-                    </div> */}
-                    <div className="col-lg-4">
-                        {/* <Link to="/login" className="item">
-                            <i className="fas fa-sign-in-alt icon"></i>
-                        </Link> */}
-                        <GoogleAuth />
+                    {
+                        (this.props.isSignedIn)?
+                        <div className="col-lg-3">
+                        <Link to="/streams/new"  style = {{margin:"3px" , borderRadius: "20px"}}  className="btn btn-outline-success">
+                                 <b>Create Stream</b>
+                                 <span><i style = {{ margin:"5px", fontSize:"15px", color:"red"}} className="fa fa-plus" aria-hidden="true"></i></span>
+                        </Link>
+                           
+                       </div>:<div className="col-lg-3"></div>
+                    }
+                  
+                    <div className="col-lg-3">
+                       <GoogleAuth />
                     </div>
                 </div>
 
@@ -37,4 +43,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = (state) =>{
+   return{
+        isSignedIn: state.auth.isSignedIn
+    }
+}
+
+export default connect(mapStateToProps,null)(Header);

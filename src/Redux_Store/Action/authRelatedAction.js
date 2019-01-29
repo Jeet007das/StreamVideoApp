@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
+
 export const signIn = (userId) => {
     return {
         type: actionTypes.SIGNED_IN,
@@ -17,6 +18,7 @@ export const createStream = (obj) => {
     return {
         type: actionTypes.CREATE_STREAM,
         payLoad : obj
+       
     }
 }
 
@@ -29,6 +31,20 @@ export const getStreamLists = () =>{
 export const setStreamLists = (obj) =>{
     return {
         type:actionTypes.SET_STREAMS_LIST,
+        payLoad : obj
+    }
+}
+
+export const getfetchStream = (obj) =>{
+    return {
+        type:actionTypes.GET_STREAM_DATA,
+        payLoad : obj
+    }
+}
+
+export const setfetchStream = (obj) =>{
+    return {
+        type:actionTypes.SET_STREAM_DATA,
         payLoad : obj
     }
 }

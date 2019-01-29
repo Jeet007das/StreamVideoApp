@@ -22,4 +22,14 @@ export const createStream = (action) => {
       },
     })
   }
+
+  export const fetchStreamData = (action) => {
+    return axios({
+      method: 'GET',
+      url: `${baseUrl}${action.url}`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  }
   

@@ -4,6 +4,7 @@ import '../../StyleSheet/style.css';
 import { connect } from 'react-redux';
 import { createStream } from '../../Redux_Store/Action';
 import { bindActionCreators } from 'redux';
+import swal from 'sweetalert';
 
 class  StreamCreate  extends Component {
     renderError({error, touched}){
@@ -27,7 +28,13 @@ class  StreamCreate  extends Component {
         )
     }
    onSubmit = (formValues) =>{
-        this.props.createStream(formValues)
+       if(!this.props.userId){
+         swal("Please login first");
+       }else{
+            formValues.userId = this.props.userId;
+            this.props.createStream(formValues)
+       }
+   
     }
 
     render() {
@@ -65,11 +72,19 @@ const fromWrapper =  reduxForm({
   })(StreamCreate);
 
 
+  const mapStateToProps = (state) => {
+    //console.log(state);
+    
+    return {
+        userId: state.auth.userId
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         createStream
     }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(fromWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(fromWrapper);
 

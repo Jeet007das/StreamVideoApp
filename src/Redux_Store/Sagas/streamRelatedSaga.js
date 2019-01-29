@@ -1,7 +1,8 @@
 import { put, call } from "redux-saga/effects";
 import * as actions from "../Action";
-import { createStream, getStreamData } from "../StreamApi's/streamRelatedApi's";
+import { createStream, getStreamData, fetchStreamData } from "../StreamApi's/streamRelatedApi's";
 import swal from 'sweetalert';
+import history from '../../routingHistory';
 
 
 export function* createStreamData(action) {
@@ -10,6 +11,7 @@ export function* createStreamData(action) {
         if(response.status === 201)
         {
             swal("Stream Submitted successfully");
+            history.push('/')
         }
         else{
             swal("Network Connection Problem");
@@ -25,6 +27,22 @@ export function* getStreamList(action) {
         if(response.status === 200){
             yield put(actions.setStreamLists(response.data))
         }
+    }catch(err){
+        console.log(err);
+        swal("Network Connection Problem");
+    }
+}
+
+export function* fetchStream(action) {
+    try{
+        if(action.payLoad){
+            let response = yield call(fetchStreamData, {url:`/streams?id=${action.payLoad.id}` })
+            if(response.status === 200)
+            {
+                yield put(actions.setfetchStream(response.data))
+            }
+        }
+       
     }catch(err){
         console.log(err);
         swal("Network Connection Problem");
