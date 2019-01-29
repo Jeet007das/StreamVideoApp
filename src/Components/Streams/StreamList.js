@@ -7,7 +7,7 @@ import { getStreamLists } from '../../Redux_Store/Action';
 class StreamList extends Component {
 
     componentDidMount(){
-        // this.props.getStreamLists()
+        this.props.getStreamLists()
         
     }
 
@@ -21,9 +21,9 @@ class StreamList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    console.log(state.stream.streamLists);
     return {
-
+        streamLists: state.stream.streamLists
     }
 }
 const mapDispatchToProps = (dispatch) => {

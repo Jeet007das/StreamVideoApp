@@ -1,6 +1,6 @@
 import { put, call, all } from "redux-saga/effects";
 import * as actions from "../Action";
-import { createStream } from "../StreamApi's/streamRelatedApi's";
+import { createStream, getStreamData } from "../StreamApi's/streamRelatedApi's";
 import swal from 'sweetalert';
 
 
@@ -20,14 +20,13 @@ export function* createStreamData(action) {
 }
 
 export function* getStreamList(action) {
-    console.log("Get stream Function");
-    
     try{
-        let response = yield call(getStreamList, {url:'/streams'})
-        console.log(response);
-        
+        let response = yield call(getStreamData, {url:'/streams'})
+        if(response.status === 200){
+            yield put(actions.setStreamLists(response.data))
+        }
     }catch(err){
         console.log(err);
-        
+        swal("Network Connection Problem");
     }
 }

@@ -8,7 +8,9 @@ const initState = {
 export default function (state = initState, action) {
     switch (action.type) {
      case actionTypes.GET_STREAMS_LIST:
-            return{ ...state, streamLists:action.payLoads}
+            return {...state}
+     case actionTypes.SET_STREAMS_LIST:
+            return{...state, streamLists : action.payLoad}
        default:
             return state;
     }

@@ -27,6 +27,7 @@ export const getStreamLists = () =>{
 }
 
 export const setStreamLists = (obj) =>{
+    console.log(obj);
     return {
         type:actionTypes.SET_STREAMS_LIST,
         payLoad : obj

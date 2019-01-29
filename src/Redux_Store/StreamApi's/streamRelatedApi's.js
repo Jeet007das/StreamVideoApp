@@ -13,9 +13,7 @@ export const createStream = (action) => {
     })
   }
 
-  export const getStreamList = (action) => {
-      console.log("calling this function to fetch list");
-      
+  export const getStreamData = (action) => {
     return axios({
       method: 'GET',
       url: `${baseUrl}${action.url}`,
