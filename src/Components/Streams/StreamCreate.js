@@ -5,8 +5,10 @@ import { createStream } from '../../Redux_Store/Action';
 import { bindActionCreators } from 'redux';
 import swal from 'sweetalert';
 import StreamForm from './StreamForm';
+import video1 from '../images/video.mp4';
+import video2 from '../images/video.webm';
 
-class  StreamCreate  extends Component {
+class StreamCreate  extends Component {
  
    onSubmit = (formValues) =>{
        if(!this.props.userId){
@@ -21,7 +23,14 @@ class  StreamCreate  extends Component {
     render() {
       return (
         <div className="">
-             <h3 className="heading"><b>Stream Create</b></h3>
+         <div className="bg-video">
+                <video className="bg-video__content" autoPlay muted loop>
+                    <source src={video1} type="video/mp4" />
+                    <source src={video2} type="video/webm" />
+                    Your browser is not supported!
+                </video>
+            </div>
+             <h3><b>Stream Create</b></h3>
              <StreamForm onSubmit = {this.onSubmit} />
         </div>
       )
