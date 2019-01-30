@@ -9,7 +9,7 @@ const initState = {
 export default function (state = initState, action) {
 switch (action.type) {
      case actionTypes.GET_STREAMS_LIST:
-            return {...state}
+            return {...state, streamData: {}}
      case actionTypes.SET_STREAMS_LIST:
             return{...state, streamLists : action.payLoad }
      case actionTypes.GET_STREAM_DATA:
@@ -19,7 +19,7 @@ switch (action.type) {
      case actionTypes.UPDATE_STREAM:
             return{...state, streamLists : action.payLoad }
      case actionTypes.DELETE_STREAM:
-            return{...state, streamLists: action.payLoad }
+            return{...state, streamLists: null }
      default:
             return state;
     }

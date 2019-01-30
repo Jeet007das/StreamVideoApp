@@ -29,7 +29,30 @@ export const createStream = (action) => {
       url: `${baseUrl}${action.url}`,
       headers: {
         'Content-Type': 'application/json',
+      }
+    })
+  }
+
+  export const editStreamData = (action) => {
+   return axios({
+      method: 'PATCH',
+      url: `${baseUrl}${action.url}`,
+      headers: {
+        'Content-Type': 'application/json',
       },
+      data:action.body
+    })
+  }
+
+  export const deleteStreamData = (action) => {
+    console.log(action);
+     return axios({
+      method: 'DELETE',
+      url: `${baseUrl}${action.url}`,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+     
     })
   }
   

@@ -14,7 +14,7 @@ class Routing extends Component {
         return (
             <div>
                 <Router history= {history }>
-                    <div style={{height:"100vh", overflow:"hidden"}}>
+                    <div style={{height:"100vh", overflow:"visible"}}>
                         <Header />
                         <Route path="/" exact component={StreamList} />
                         <Route path="/streams/edit/:id" exact component={StreamEdit} />
