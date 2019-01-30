@@ -19,7 +19,7 @@ switch (action.type) {
      case actionTypes.UPDATE_STREAM:
             return{...state, streamLists : action.payLoad }
      case actionTypes.DELETE_STREAM:
-            return{...state, streamLists: null }
+            return{...state}
      default:
             return state;
     }

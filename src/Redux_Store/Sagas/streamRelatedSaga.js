@@ -34,7 +34,7 @@ export function* getStreamList(action) {
             yield put(actions.setStreamLists(response.data))
         }
     }catch(err){
-        console.log(err);
+        console.error(err);
         swal("Network Connection Problem",{
             icon: "warning",
           });
@@ -52,7 +52,7 @@ export function* fetchStream(action) {
         }
    
     }catch(err){
-        console.log(err);
+        console.error(err);
         swal("Network Connection Problem");
     }
 }
@@ -60,17 +60,22 @@ export function* fetchStream(action) {
 export function* editStream(action) {
     try {
         if (action.formData) {
-            let response = yield call(editStreamData, { url: `/streams/${action.id}`, body: action.formData })
-            if (response.status === 200) {
+            let response1 = yield call(editStreamData, { url: `/streams/${action.id}`, body: action.formData })
+            if (response1.status === 200) {
+                
                 swal("Stream Updated Successfully", {
                     icon: "success",
                 });
-                history.push('/')
+                history.push('/')    
+            }else{
+                swal("Stream Not Found", {
+                    icon: "warning",
+                });
             }
         }
 
     } catch (err) {
-        console.log(err);
+        console.error(err);
         swal("Network Connection Problem", {
             icon: "warning",
         });
@@ -78,14 +83,13 @@ export function* editStream(action) {
 }
 
 export function* deleteStream(action) {
-    console.log(action);
+     console.log(action);
     
     try{
+        
         if(action.payLoad){
             let response = yield call(deleteStreamData, {url:`/streams/${action.payLoad}`})
-            console.log(response);
-            
-             if(response.status === 200)
+            if(response.status === 200)
             {
                 swal("Stream Deleted Successfully", {
                     icon: "success",
@@ -99,7 +103,7 @@ export function* deleteStream(action) {
         }
    
     }catch(err){
-        console.log(err);
+        console.error(err);
         swal("Network Connection Problem",{
             icon: "warning",
           });

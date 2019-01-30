@@ -43,7 +43,6 @@ export const getfetchStream = (obj) =>{
 }
 
 export const setfetchStream = (obj) =>{
-    console.log(obj);
     return {
         type:actionTypes.SET_STREAM_DATA,
         payLoad : obj
@@ -51,8 +50,7 @@ export const setfetchStream = (obj) =>{
 }
 
 export const editStream = (id, obj) =>{
-    console.log(obj);
-    return {
+   return {
         type:actionTypes.UPDATE_STREAM,
         id,
         formData : obj
@@ -60,7 +58,6 @@ export const editStream = (id, obj) =>{
 }
 
 export const deleteStream = (id) =>{
-    console.log(id);
     return {
         type:actionTypes.DELETE_STREAM,
         payLoad : id

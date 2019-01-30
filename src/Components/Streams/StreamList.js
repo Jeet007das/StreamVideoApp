@@ -54,9 +54,7 @@ class StreamList extends Component {
                            {
                                (this.props.currentUserId === item.userId) ?
                                    <div style= {{alignItems: "center",display: "grid"}}  className="col-2 p-0">
-                                        {/* <Link to={`/streams/delete/${item.id}`}> */}
-                                            <i onClick = {() => this.confirmDelete(item.id)} style={{ fontSize: "50px", color: "red", margin: "10px", cursor:"pointer"}} className="fa fa-trash" aria-hidden="true"></i>
-                                        {/* </Link> */}
+                                       <i onClick = {() => this.confirmDelete(item.id)} style={{ fontSize: "50px", color: "red", margin: "10px", cursor:"pointer"}} className="fa fa-trash" aria-hidden="true"></i>
                                    </div>
                              : null
                            }
@@ -69,11 +67,9 @@ class StreamList extends Component {
        });
    }
     render() {
-        console.log(this.props.streamLists);
-        
-      return (
+    return (
           <div className="background-class" >
-             <h2>Stream List</h2>
+             <h2 className = "heading"> Stream List</h2>
              <div className = "row mx-0 ">
              
              <div className = "col-lg-2"></div>

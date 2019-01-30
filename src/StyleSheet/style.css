@@ -58,3 +58,9 @@
     object-fit: contain;
 
 }
+.heading{
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: 35px;
+    color: honeydew;
+}
