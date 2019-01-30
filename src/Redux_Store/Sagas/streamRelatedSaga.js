@@ -95,6 +95,8 @@ export function* deleteStream(action) {
                     icon: "success",
                   });
                 history.push('/')
+                let res = yield call(getStreamData, {url:'/streams'});
+                   yield put(actions.setStreamLists(res.data))
             }else{
                 swal("Stream Not Found", {
                     icon: "warning",

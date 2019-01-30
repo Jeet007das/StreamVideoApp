@@ -9,89 +9,89 @@ import swal from 'sweetalert';
 
 class StreamList extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getStreamLists()
     }
 
-    confirmDelete = async (id) =>{
+    confirmDelete = async (id) => {
         swal({
             title: "Are you sure?",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-                this.props.deleteStream(id);
-            } 
-          })
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.props.deleteStream(id);
+                }
+            })
     }
 
-   renderStreamList = () =>{
-      return this.props.streamLists.map((item,key) =>{
-           return(
-           
-               <div className="card m-3 card-style" key={key}>
-                   <div className="card-body p-0">
-                       <div className="row m-0">
-                           <div style= {{alignItems: "center",display: "grid"}} className="col-2 p-0">
+    renderStreamList = () => {
+        return this.props.streamLists.map((item, key) => {
+            return (
+
+                <div className="card m-3 card-style" key={key}>
+                    <div className="card-body p-0">
+                        <div className="row m-0">
+                            <div style={{ alignItems: "center", display: "grid" }} className="col-2 p-0">
                                 <i className="fa fa-play-circle icon-style" aria-hidden="true"></i>
-                           </div>
-                           <div className="col-6 p-0">
-                               <h3 style={{ color: "sienna" }}><b>{item.title}</b></h3>
-                               <p style={{ color: "cadetblue" }}>{item.description}</p>
-                           </div>
-                           {
-                               (this.props.currentUserId === item.userId) ?
-                                   <div style= {{alignItems: "center",display: "grid"}}  className="col-2 p-0">
-                                    <Link to={`/streams/edit/${item.id}`}>
-                                        <i style={{ fontSize: "50px", color: "green", margin: "10px" }} className="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </Link>
-                                       
-                                   </div>
-                                   : null
-                           }
-                           {
-                               (this.props.currentUserId === item.userId) ?
-                                   <div style= {{alignItems: "center",display: "grid"}}  className="col-2 p-0">
-                                       <i onClick = {() => this.confirmDelete(item.id)} style={{ fontSize: "50px", color: "red", margin: "10px", cursor:"pointer"}} className="fa fa-trash" aria-hidden="true"></i>
-                                   </div>
-                             : null
-                           }
+                            </div>
+                            <div className="col-6 p-0">
+                                <h3 style={{ color: "sienna" }}><b>{item.title}</b></h3>
+                                <p style={{ color: "cadetblue" }}>{item.description}</p>
+                            </div>
+                            {
+                                (this.props.currentUserId === item.userId) ?
+                                    <div style={{ alignItems: "center", display: "grid" }} className="col-2 p-0">
+                                        <Link to={`/streams/edit/${item.id}`}>
+                                            <i style={{ fontSize: "50px", color: "green", margin: "10px" }} className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </Link>
 
-                       </div>
+                                    </div>
+                                    : null
+                            }
+                            {
+                                (this.props.currentUserId === item.userId) ?
+                                    <div style={{ alignItems: "center", display: "grid" }} className="col-2 p-0">
+                                        <i onClick={() => this.confirmDelete(item.id)} style={{ fontSize: "50px", color: "red", margin: "10px", cursor: "pointer" }} className="fa fa-trash" aria-hidden="true"></i>
+                                    </div>
+                                    : null
+                            }
 
-                   </div>
-               </div>
-           )
-       });
-   }
-    render() {
-    return (
-          <div className="background-class" >
-             <h2 className = "heading"> Stream List</h2>
-             <div className = "row mx-0 ">
-             
-             <div className = "col-lg-2"></div>
-                <div className = "col-lg-8">
-                     {
-                         (this.props.streamLists != null)?this.renderStreamList():<div>Loading...</div>
-                    }
+                        </div>
+
+                    </div>
                 </div>
-                <div className = "col-lg-2"></div>
-             </div>
-              
-          </div>
-      )
+            )
+        });
+    }
+    render() {
+        return (
+            <div className="background-class" >
+                <h2 className="heading"> Stream List</h2>
+                <div className="row mx-0 ">
+
+                    <div className="col-lg-2"></div>
+                    <div className="col-lg-8">
+                        {
+                            (this.props.streamLists != null) ? this.renderStreamList() : <div>Loading...</div>
+                        }
+                    </div>
+                    <div className="col-lg-2"></div>
+                </div>
+
+            </div>
+        )
     }
 }
 
 const mapStateToProps = (state) => {
     console.log(state);
-    
+
     return {
         streamLists: state.stream.streamLists,
-        currentUserId:state.auth.userId
+        currentUserId: state.auth.userId
     }
 }
 const mapDispatchToProps = (dispatch) => {
