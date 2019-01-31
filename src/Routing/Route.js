@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route } from 'react-router-dom';
 import StreamCreate from '../Components/Streams/StreamCreate';
-import StreamDelete from '../Components/Streams/StreamDelete';
 import StreamShow from '../Components/Streams/StreamShow';
 import StreamEdit from '../Components/Streams/StreamEdit';
 import StreamList from '../Components/Streams/StreamList';
@@ -18,8 +17,7 @@ class Routing extends Component {
                         <Header />
                         <Route path="/" exact component={StreamList} />
                         <Route path="/streams/edit/:id" exact component={StreamEdit} />
-                        <Route path="/streams/delete" exact component={StreamDelete} />
-                        <Route path="/streams/show" exact component={StreamShow} />
+                        <Route path="/streams/show/:id" exact component={StreamShow} />
                         <Route path="/streams/new" exact component={StreamCreate} />
                     </div>
                 </Router>

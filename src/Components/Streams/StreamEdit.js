@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux';
 import { getfetchStream, editStream } from '../../Redux_Store/Action';
 import StreamForm from './StreamForm';
 import swal from 'sweetalert';
-import video1 from '../images/video.mp4';
-import video2 from '../images/video.webm';
+import video1 from '../images/Sony-cam.mp4';
+import video2 from '../images/Sony-cam.webm';
 
 class StreamEdit extends Component {
 
@@ -35,7 +35,7 @@ componentDidMount(){
                 </video>
             </div>
             
-              <h3><b>Stream Update</b></h3>
+              <h3 style = {{color:"white"}}><b>Stream Update</b></h3>
               {
                   (this.props.streamData) ? <div>
                        <StreamForm 

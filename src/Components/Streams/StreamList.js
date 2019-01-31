@@ -34,13 +34,20 @@ class StreamList extends Component {
                 <div className="card m-3 card-style" key={key}>
                     <div className="card-body p-0">
                         <div className="row m-0">
+
                             <div style={{ alignItems: "center", display: "grid" }} className="col-2 p-0">
-                                <i className="fa fa-play-circle icon-style" aria-hidden="true"></i>
+                                <Link to={`/streams/show/${item.id}`}>
+                                    <i className="fa fa-play-circle icon-style" aria-hidden="true"></i>
+                                </Link>
                             </div>
                             <div className="col-6 p-0">
+                            <Link to={`/streams/show/${item.id}`}>
                                 <h3 style={{ color: "sienna" }}><b>{item.title}</b></h3>
+                            </Link>
                                 <p style={{ color: "cadetblue" }}>{item.description}</p>
+                            
                             </div>
+                        
                             {
                                 (this.props.currentUserId === item.userId) ?
                                     <div style={{ alignItems: "center", display: "grid" }} className="col-2 p-0">
@@ -87,9 +94,7 @@ class StreamList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
-
-    return {
+   return {
         streamLists: state.stream.streamLists,
         currentUserId: state.auth.userId
     }

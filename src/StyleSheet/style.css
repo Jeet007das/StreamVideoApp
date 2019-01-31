@@ -52,7 +52,7 @@
    
 }
 .background-class{
-    background-image: url('../Components/images/kyle-loftus-978885-unsplash.jpg');
+    background-image: url('../Components/images/Sony-cam.jpg');
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -72,7 +72,7 @@
     height: 100%;
     width: 100%;
     z-index: -1;
-    opacity: .15;
+    /* opacity: .15; */
     overflow: hidden;
 }
 

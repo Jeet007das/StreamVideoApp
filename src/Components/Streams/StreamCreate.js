@@ -5,8 +5,8 @@ import { createStream } from '../../Redux_Store/Action';
 import { bindActionCreators } from 'redux';
 import swal from 'sweetalert';
 import StreamForm from './StreamForm';
-import video1 from '../images/video.mp4';
-import video2 from '../images/video.webm';
+import video1 from '../images/Sony-cam.mp4';
+import video2 from '../images/Sony-cam.webm';
 
 class StreamCreate  extends Component {
  
@@ -30,7 +30,7 @@ class StreamCreate  extends Component {
                     Your browser is not supported!
                 </video>
             </div>
-             <h3><b>Stream Create</b></h3>
+             <h3 style = {{color:"white"}}><b>Stream Create</b></h3>
              <StreamForm onSubmit = {this.onSubmit} />
         </div>
       )
